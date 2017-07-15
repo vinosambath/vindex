@@ -9,7 +9,9 @@ class Searcher:
 		self._ir = IndexReader();
 
 	def searchWordFromIndex(self, wordToBeSearched):
-		print self._ir.readWordSchemaFromIndex(wordToBeSearched)._documentId;
+		results = self._ir.readWordSchemaFromIndex(wordToBeSearched);
+		for result in results:
+			print result._documentId
 
 
 if 	__name__ == "__main__":

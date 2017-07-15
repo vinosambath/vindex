@@ -1,5 +1,6 @@
 import pickle
 
+from collections import defaultdict
 from schema import Schema;
 
 class Singleton(type):
@@ -14,10 +15,10 @@ class InMemoryIndex():
 	__metaclass__ = Singleton
 
 	def __init__(self):
-		self._inMemoryIndex = dict();
+		self._inMemoryIndex = defaultdict(list);
 
 	def addWordsToIndex(self, words, documentId, lineNo, position):
-		self._inMemoryIndex[words] = (Schema(documentId, lineNo, position));
+		self._inMemoryIndex[words].append(Schema(documentId, lineNo, position));
 
 	def pickleIndexFile(self):
 		with open(r"file.txt","wb") as file:
