@@ -15,9 +15,9 @@ class Indexer:
 
 if __name__ == "__main__":
 	try:
-		directoryToBeIndexed = sys.argv[0];
+		directoryToBeIndexed = sys.argv[1];
 	except:
-		print "Please specify a directory to be indexed."
+		raise Exception('Please specify the directory to be indexed');
 
 	indexer = Indexer(sys.argv[0]);
 	indexer.tokenizeFilesInDirectory();
