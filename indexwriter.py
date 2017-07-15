@@ -1,11 +1,10 @@
 from schema import Schema;
+from inmemoryindex import InMemoryIndex;
 
 class IndexWriter:
 
 	def __init__(self):
-		self.inMemoryIndex = dict();
+		self._imx = InMemoryIndex()
 
-	def addDocumentsToIndex(self):
-		return 0;
-
-
+	def addDocumentsToIndex(self, words, documentId, lineNo, position):
+		self._imx.addWordsToIndex(words, documentId, lineNo, position);
