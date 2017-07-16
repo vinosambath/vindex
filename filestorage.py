@@ -5,6 +5,6 @@ class FileStorage:
 	def __init__(self):
 		self._imx = InMemoryIndex()
 
-	def pickleIndexFile(self):
-		self._imx.pickleIndexFile();
+	def pickleIndexFile(self, indexStorageDirectory):
+		self._imx.pickleIndexFile(indexStorageDirectory);
 

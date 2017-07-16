@@ -1,3 +1,4 @@
+import os
 import pickle
 
 from collections import defaultdict
@@ -20,12 +21,14 @@ class InMemoryIndex():
 	def addWordsToIndex(self, words, documentId, lineNo, position):
 		self._inMemoryIndex[words].append(Schema(documentId, lineNo, position));
 
-	def pickleIndexFile(self):
-		with open(r"file.txt","wb") as file:
+	def pickleIndexFile(self,indexStorageDirectory):
+		filepath = indexStorageDirectory + os.sep + "index.pickle"
+		with open(filepath,"wb") as file:
 			pickle.dump(self._inMemoryIndex, file);
 
-	def unpickleFileToIndex(self):
-		with open(r"file.txt", "rb") as file:
+	def unpickleFileToIndex(self, indexStorageDirectory):
+		filepath = indexStorageDirectory + os.sep + "index.pickle"
+		with open(filepath, "rb") as file:
 			self._inMemoryIndex = pickle.load(file);
 
 		print self._inMemoryIndex;
